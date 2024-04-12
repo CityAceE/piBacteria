@@ -1,4 +1,4 @@
-		fast	= 1
+	fast	= 1
 
 macro	TIME	cycles {
 	sub	stlo, cycles
