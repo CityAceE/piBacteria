@@ -454,7 +454,7 @@ hexh1:  mov     r11, r11, ror 28
         pop     {r11, r12, pc}
     if qemu = 0
 send:   push    {r12, lr}
-        ldr     lr, auxb
+        ldr     lr, [auxb]
 send1:  ldr     r12, [lr, AMLSRREG]
         tst     r12, 0x20
         beq     send1
