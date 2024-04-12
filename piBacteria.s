@@ -289,7 +289,7 @@ drawp:  sub     r11, r3, 6
         ldr     r12, [mem, opinrap]
     if qemu = 0
         ldr     r11, [r12, r11, lsl 2]
-aqui:   ldrcs   r11, border
+aqui:   ldrcs   r11, [border]
     else
         add     r12, r11, lsl 4
         ldr     r11, [r12], 4
@@ -497,7 +497,7 @@ in_:    tst     r0, 1
         lsr     r3, r0, 8
         mov     r0, 0x1f
     if qemu = 0
-        ldr     r11, _keys
+        ldr     r11, [_keys]
         orr     r3, 0x100
 in1:    ldrb    r2, [r11], 1
         lsrs    r3, 1
@@ -515,7 +515,7 @@ out:    tst     r0, 1
         bxne    lr
         and     r3, r1, 0x7
     if qemu = 0
-        ldr     r2, c1111
+        ldr     r2, [c1111]
         mul     r3, r2, r3
     else
         ldr     r2, [memo]
@@ -557,7 +557,7 @@ mbox1:  ldr     r3, [r2, MBOXSTATUS]
 
         include  "z80.s"
 
-		db 0x00, 0xf0, 0x20, 0xe3	; for compare with an original GNU C build
+		; db 0x00, 0xf0, 0x20, 0xe3	; for compare with an original GNU C build
 
         align 	16
 
